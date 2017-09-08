@@ -1,0 +1,54 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <canvas id="c" width="800" height="800"></canvas>
+        <script>
+            var c = document.getElementById("c");
+            var cc = c.getContext("2d");
+            cc.fillStyle="black";
+            cc.fillRect(0,0,c.width,c.height);
+            class Walker {
+
+                constructor() {
+                    this.x = c.width/2;
+                    this.y = c.height/2;
+                }
+
+                walk() {
+                    var choice = Math.floor(Math.random() * 4); 
+                    switch (choice){
+                        case 0:
+                            this.x++;
+                            console.log(this.x + "" + this.y);
+                            break;
+                        case 1:
+                            this.x--;
+                            console.log(this.x + "" + this.y);
+                            break;
+                        case 2:
+                            this.y++;
+                            console.log(this.x + "" + this.y);
+                            break;
+                        case 3:
+                            this.y--;
+                            console.log(this.x + "" + this.y);
+                            break;
+                    }
+                }
+
+                draw() {
+                    cc.fillStyle = "#FF0000";
+                    cc.fillRect(this.x,this.y,1,1);
+                }
+            }
+
+            var w = new Walker();
+                setInterval(function(){
+                    w.walk();
+                    w.draw();
+                },1000/300);
+
+        </script>
+    </body>
+</html>
